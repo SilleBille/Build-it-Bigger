@@ -45,7 +45,7 @@ public class MainActivityFragment extends BasicJokesProcessor {
             @Override
             public void onAdClosed() {
                 requestNewInterstitial();
-                getAndDisplayJoke(getActivity(), progressBar);
+                getAndDisplayJoke(getActivity());
             }
         });
 
