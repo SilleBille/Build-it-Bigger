@@ -1,20 +1,16 @@
 package com.udacity.gradle.builditbigger;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.udacity.gradle.builditbigger.R;
+import android.widget.ProgressBar;
 
 
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainActivityFragment extends Fragment {
+public class MainActivityFragment extends BasicJokesProcessor {
 
     public MainActivityFragment() {
     }
@@ -23,7 +19,12 @@ public class MainActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
-
+        progressBar = (ProgressBar) root.findViewById(R.id.prog_joke);
+        progressBar.setVisibility(View.GONE);
         return root;
+    }
+
+    public void displayJoke() {
+        getAndDisplayJoke(getActivity());
     }
 }

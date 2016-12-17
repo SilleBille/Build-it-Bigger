@@ -6,15 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 
 
 /**
  * A placeholder fragment containing a simple view.
  */
-public class MainActivityFragment extends BasicJokesProcessor  {
-    ProgressBar progressBar;
+public class MainActivityFragment extends BasicJokesProcessor {
+    InterstitialAd mInterstitialAd;
 
     public MainActivityFragment() {
     }
@@ -34,14 +36,43 @@ public class MainActivityFragment extends BasicJokesProcessor  {
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
+
+
+        mInterstitialAd = new InterstitialAd(getActivity());
+        mInterstitialAd.setAdUnitId(getString(R.string.interstital_ad_unit_id));
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                requestNewInterstitial();
+                getAndDisplayJoke(getActivity(), progressBar);
+            }
+        });
+
+
+
+        // Load Banner Ad
         mAdView.loadAd(adRequest);
+
+        // Load Interstital Ad
+        requestNewInterstitial();
         return root;
     }
 
-    public void displayJoke() {
-        // Need to load Ads here
-        getAndDisplayJoke(getActivity(), progressBar);
+    private void requestNewInterstitial() {
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+        mInterstitialAd.loadAd(adRequest);
     }
 
 
+    public void displayJoke() {
+        // Load interstital Ads here
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        } else {
+            getAndDisplayJoke(getActivity());
+        }
+    }
 }

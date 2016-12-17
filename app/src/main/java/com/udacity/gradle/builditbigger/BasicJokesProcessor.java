@@ -3,11 +3,8 @@ package com.udacity.gradle.builditbigger;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -34,8 +31,7 @@ public class BasicJokesProcessor extends Fragment {
         return root;
     }*/
 
-    public void getAndDisplayJoke(Context context, ProgressBar progBar) {
-        progressBar = progBar;
+    public void getAndDisplayJoke(Context context) {
         new BasicAsyncTask().execute(context);
     }
 
