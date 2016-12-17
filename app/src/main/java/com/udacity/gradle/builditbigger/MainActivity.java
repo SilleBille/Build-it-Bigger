@@ -40,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
+        final MainActivityFragment fragment = (MainActivityFragment)
+                getSupportFragmentManager().findFragmentById(R.id.fragment);
+        fragment.displayJoke();
     }
 
 
