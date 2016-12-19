@@ -27,6 +27,11 @@ android {
             applicationId 'com.udacity.gradle.builditbigger.paid'
         }
     }
+    sourceSets {
+        free {
+            manifest.srcFile 'src/free/AndroidManifest.xml'
+        }
+    }
 }
 configurations.all {
     resolutionStrategy {

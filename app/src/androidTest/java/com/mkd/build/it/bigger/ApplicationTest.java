@@ -39,7 +39,7 @@ public class ApplicationTest {
 
 
     @Test
-    public void sayHello() {
+    public void checkJokeRetrieving() {
         onView(withId(R.id.button2)).perform(click());
         // Tutorial from https://google.github.io/android-testing-support-library/docs/espresso/intents/
         intended(hasComponent(hasClassName(JokeViewerActivity.class.getName())));
