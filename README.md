@@ -13,6 +13,7 @@
 
 ## Instructions to run Gradle task
 From root of the project, run (Windows)
+
     gradlew rFT
 
 The key inside `strings.xml` must be replaced for displaying Ads
