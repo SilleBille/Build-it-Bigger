@@ -2,7 +2,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="banner_ad_unit_id">ca-app-pub-1141532919947974/2642378441</string>
-    <string name="interstital_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="banner_ad_unit_id">xxx</string>
+    <string name="interstital_ad_unit_id">yyy</string>
 
 </resources>
