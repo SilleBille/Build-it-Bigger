@@ -17,3 +17,16 @@ allprojects {
         jcenter()
     }
 }
+
+task runFullTest(dependsOn:[':jokebackend:appengineRun',':jokebackend:appengineStop', ':app:connectedAndroidTest']) {
+
+    tasks.getByPath(":app:connectedAndroidTest").mustRunAfter tasks.getByPath(":jokebackend:appengineRun")
+    tasks.getByPath(":jokebackend:appengineStop").mustRunAfter tasks.getByPath(":app:connectedAndroidTest")
+
+
+    project(":jokebackend") {
+        appengine {
+            daemon true
+        }
+    }
+}
