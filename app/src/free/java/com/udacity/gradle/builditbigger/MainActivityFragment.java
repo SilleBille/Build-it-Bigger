@@ -34,6 +34,7 @@ public class MainActivityFragment extends BasicJokesProcessor {
         // get test ads on a physical device. e.g.
         // "Use AdRequest.Builder.addTestDevice("ABCDEF012345") to get test ads on this device."
         AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice("B9760DAC7975BAFFEDAE8B3C248F0C20")
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
 
@@ -61,6 +62,7 @@ public class MainActivityFragment extends BasicJokesProcessor {
 
     private void requestNewInterstitial() {
         AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice("B9760DAC7975BAFFEDAE8B3C248F0C20")
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
         mInterstitialAd.loadAd(adRequest);

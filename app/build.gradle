@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.udacity.gradle.builditbigger"
-        minSdkVersion 16
+        minSdkVersion 10
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -26,19 +26,35 @@ android {
         paid {
             applicationId 'com.udacity.gradle.builditbigger.paid'
         }
-
     }
 }
-
+configurations.all {
+    resolutionStrategy {
+        force 'com.android.support:support-annotations:23.1.1'
+    }
+}
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(path: ':jokebackend', configuration: 'android-endpoints')
+    compile project(':jokeviewer')
+
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.google.code.findbugs:jsr305:2.0.1'
+    compile 'com.android.support:support-v4:25.1.0'
+
+    freeCompile 'com.google.android.gms:play-services-ads:10.0.1'
+
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile project(path: ':jokebackend', configuration: 'android-endpoints')
-    compile project(':jokeviewer')
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    compile 'com.google.android.gms:play-services-ads:10.0.1'
-    compile 'com.google.code.findbugs:jsr305:2.0.1'
-    compile 'com.android.support:support-v4:25.1.0'
+    androidTestCompile 'junit:junit:4.12'
+
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    // Set this dependency to use JUnit 4 rules
+    androidTestCompile 'com.android.support.test:rules:0.5'
+    // Set this dependency to build and run UI Automator tests
+    androidTestCompile 'com.android.support.test.uiautomator:uiautomator-v18:2.1.2'
+    androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2.2'
+
+
 }

@@ -38,4 +38,7 @@ appengine {
         getClientLibsOnBuild = true
         getDiscoveryDocsOnBuild = true
     }
+    appengine {
+        httpAddress = "0.0.0.0"
+    }
 }
